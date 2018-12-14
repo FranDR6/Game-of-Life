@@ -12,7 +12,7 @@ import javax.swing.border.MatteBorder;
 
 public class Principal extends Vista {
 
-	int lado = 35;
+	int lado = 50;
 	int[][] tableroOculto = new int[lado][lado];
 	int[][] tableroVisible = new int[lado][lado];
 	JButton[][] botonera = new JButton[lado][lado];
@@ -30,15 +30,21 @@ public class Principal extends Vista {
 				botonera[x][y] = new JButton();
 				botonera[x][y].setName(x + " " + y);
 				botonera[x][y].setBackground(Color.BLACK);
-				botonera[x][y].setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+				botonera[x][y].setBorder(new MatteBorder(1, 1, 1, 1, Color.white));
 				botonera[x][y].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						JButton boton = (JButton) e.getSource();
 						String[] coordenadas = boton.getName().split(" ");
 						int x = Integer.valueOf(coordenadas[0]);
 						int y = Integer.valueOf(coordenadas[1]);
-						botonera[x][y].setBackground(Color.WHITE);
-						tableroOculto[x][y] = 1;
+
+						if (tableroOculto[x][y] == 0) {
+							botonera[x][y].setBackground(Color.WHITE);
+							tableroOculto[x][y] = 1;
+						} else {
+							botonera[x][y].setBackground(Color.BLACK);
+							tableroOculto[x][y] = 0;
+						}
 					}
 				});
 				panelBotonera.add(botonera[x][y]);
@@ -51,12 +57,11 @@ public class Principal extends Vista {
 		btnEmpezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pausa();
-
 			}
 		});
 	}
 
-	protected void actualizarColores(int[][] tablero) {
+	private void actualizarColores(int[][] tablero) {
 		for (int x = 0; x < tablero.length; x++) {
 			for (int y = 0; y < tablero.length; y++) {
 				if (tablero[x][y] == 1) {
@@ -70,46 +75,65 @@ public class Principal extends Vista {
 		}
 	}
 
-	private void iniciar() {
+	public void iniciar() {
+		// MODIFICA EL TABLERO VISIBLE A PARTIR DEL OCULTO
 		for (int x = 0; x < tableroOculto.length; x++) {
 			for (int y = 0; y < tableroOculto.length; y++) {
 				tableroVisible[x][y] = isVivo(x, y, tableroOculto);
 			}
 		}
-		System.arraycopy(tableroVisible, 0, tableroOculto, 0, tableroOculto.length);
+
+		// HACEMOS QUE TABLERO OCULTO SEA IGUAL AL VISIBLE
+		for (int i = 0; i < botonera.length; i++) {
+			for (int j = 0; j < botonera.length; j++) {
+				tableroOculto[i][j] = tableroVisible[i][j];
+			}
+		}
+
 		actualizarColores(tableroVisible);
 		actualizarPantalla();
 	}
 
-	protected int isVivo(int x, int y, int[][] tablero) {
+	public static int isVivo(int x, int y, int[][] tablero) {
 		int contador = 0;
-		for (int i = x - 1; i < x + 2; i++) {
-			for (int j = y - 1; j < y + 2; j++) {
-				if (i < 0 || j < 0 || i > tablero.length - 1 || j > tablero.length - 1) {
-					continue;
-				}
-				if (tablero[i][j] == 1) {
-					contador++;
+		if (tablero[x][y] == 1) { // CUANDO ESTA VIVA
+			for (int i = x - 1; i < x + 2; i++) {
+				for (int j = y - 1; j < y + 2; j++) {
+					if (i < 0 || j < 0 || i > tablero.length - 1 || j > tablero.length - 1 || (i == x && j == y)) {
+						continue;
+					}
+					if (tablero[i][j] == 1) {
+						contador++;
+					}
 				}
 			}
-		}
-		if (tablero[x][y] == 1) {
-			contador--;
-			if (contador == 2 || contador == 3) {
+			if (contador == 2 || contador == 3) { // CONDICON PARA MANTENERSE VIVA
 				return 1;
 			} else {
 				return 0;
 			}
-		} else {
-			if (contador == 3) {
+		} else { // CUANDO ESTA MUERTA
+			for (int i = x - 1; i < x + 2; i++) {
+				for (int j = y - 1; j < y + 2; j++) {
+					if (i < 0 || j < 0 || i > tablero.length - 1 || j > tablero.length - 1 || (i == x && j == y)) {
+						continue;
+					}
+					if (tablero[i][j] == 1) {
+						contador++;
+					}
+				}
+			}
+
+			if (contador == 3) { // CONDICION PARA RENACER
 				return 1;
 			} else {
 				return 0;
 			}
+
 		}
 	}
 
-	public void actualizarPantalla() {
+	private void actualizarPantalla() {
 		SwingUtilities.updateComponentTreeUI(getContentPane());
 	}
 
@@ -120,7 +144,7 @@ public class Principal extends Vista {
 			@Override
 			protected Object doInBackground() throws Exception {
 				try {
-					Thread.sleep(50);
+					Thread.sleep(30);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}

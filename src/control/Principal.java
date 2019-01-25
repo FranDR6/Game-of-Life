@@ -144,7 +144,7 @@ public class Principal extends Vista {
 			@Override
 			protected Object doInBackground() throws Exception {
 				try {
-					Thread.sleep(30);
+					Thread.sleep(80);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}

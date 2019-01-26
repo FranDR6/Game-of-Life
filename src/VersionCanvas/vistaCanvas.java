@@ -22,7 +22,7 @@ public class vistaCanvas extends Canvas {
 		requestFocus();
 	}
 
-	public void dibujar(final Tablero tablero) {
+	public void dibujar(final Tablero tablero, boolean vida, int cuadrado) {
 		BufferStrategy buffer = getBufferStrategy();
 
 		if (buffer == null) {
@@ -32,10 +32,12 @@ public class vistaCanvas extends Canvas {
 
 		Graphics g = buffer.getDrawGraphics();
 
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, ancho, alto);
+		if (vida) {
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, ancho, alto);
+		}
 
-		tablero.dibujar(g);
+		tablero.dibujar(g, vida, cuadrado);
 
 		Toolkit.getDefaultToolkit().sync();
 

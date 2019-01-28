@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.input.BomInput.BytesProcessedNotification;
 
+import Canvas.Vista.Lienzo;
+import Canvas.Vista.Ventana;
+
 public class Principal {
 
 	private final int ANCHO;
@@ -14,7 +17,7 @@ public class Principal {
 	private boolean enFuncionamiento = false;
 	private boolean vida = false;
 
-	private vistaCanvas canvas;
+	private Lienzo canvas;
 	private Ventana ventana;
 	private Tablero tablero;
 
@@ -34,7 +37,7 @@ public class Principal {
 	private void iniciar() {
 		enFuncionamiento = true;
 		tablero = new Tablero(ANCHO / cuadrado, ALTO / cuadrado);
-		canvas = new vistaCanvas(ANCHO, ALTO);
+		canvas = new Lienzo(ANCHO, ALTO);
 		ventana = new Ventana(canvas);
 		listener();
 

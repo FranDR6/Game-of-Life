@@ -1,4 +1,4 @@
-package Canvas;
+package Canvas.Vista;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -7,12 +7,14 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
-public class vistaCanvas extends Canvas {
+import Canvas.Tablero;
+
+public class Lienzo extends Canvas {
 
 	private int ancho;
 	private int alto;
 
-	public vistaCanvas(final int ancho, final int alto) {
+	public Lienzo(final int ancho, final int alto) {
 		this.ancho = ancho;
 		this.alto = alto;
 

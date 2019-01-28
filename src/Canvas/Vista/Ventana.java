@@ -1,4 +1,4 @@
-package Canvas;
+package Canvas.Vista;
 
 import java.awt.BorderLayout;
 
@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -21,11 +22,11 @@ public class Ventana extends JFrame {
 	public JButton btnIniciar;
 	public JButton btnPausar;
 
-	public Ventana(vistaCanvas dibujo) {
+	public Ventana(Lienzo dibujo) {
 		configurarVentana(dibujo);
 	}
 
-	private void configurarVentana(vistaCanvas dibujo) {
+	private void configurarVentana(Lienzo dibujo) {
 		setTitle("Juego de la Vida");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);

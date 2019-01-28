@@ -11,6 +11,8 @@ import Canvas.Tablero;
 
 public class Lienzo extends Canvas {
 
+	private static final long serialVersionUID = -7197762908765363778L;
+
 	private int ancho;
 	private int alto;
 
@@ -35,6 +37,24 @@ public class Lienzo extends Canvas {
 		Graphics g = buffer.getDrawGraphics();
 
 		tablero.dibujar(g, vida, cuadrado);
+
+		for (int i = 0; i < tablero.getCelulasOcultas().length; i++) {
+			for (int j = 0; j < tablero.getCelulasOcultas()[i].length; j++) {
+
+				if (vida == false) {
+					if (tablero.getCelulasOcultas()[i][j] == 1) {
+						g.setColor(Color.WHITE);
+					} else {
+						g.setColor(Color.BLACK);
+					}
+					g.fillRect(i * cuadrado, j * cuadrado, cuadrado, cuadrado);
+				}
+
+				g.setColor(Color.DARK_GRAY);
+				g.drawRect(i * cuadrado, j * cuadrado, cuadrado, cuadrado);
+				
+			}
+		}
 
 		Toolkit.getDefaultToolkit().sync();
 

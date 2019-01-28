@@ -17,6 +17,23 @@ public class Tablero {
 		this.celulasOcultas = new int[i][j];
 		this.celulasVisibles = new int[i][j];
 
+		System.out.println(celulasOcultas.length + " " + celulasOcultas[0].length);
+		
+		// PATRON
+//		celulasOcultas[95][47] = 1;
+//		celulasOcultas[94][48] = 1;
+//		celulasOcultas[96][47] = 1;
+//		celulasOcultas[96][48] = 1;
+//		celulasOcultas[97][46] = 1;
+//		celulasOcultas[98][46] = 1;
+//		celulasOcultas[98][47] = 1;
+//		celulasOcultas[98][48] = 1;
+//		celulasOcultas[98][44] = 1;
+//		celulasOcultas[96][44] = 1;
+//		celulasOcultas[95][44] = 1;
+//		celulasOcultas[94][44] = 1;
+//		celulasOcultas[94][45] = 1;
+
 		for (int x = 0; x < celulasOcultas.length; x++) {
 			for (int y = 0; y < celulasOcultas[x].length; y++) {
 				celulasOcultas[x][y] = obtenerNumeroAleatorio(0, 1);
@@ -28,7 +45,7 @@ public class Tablero {
 
 	public void dibujar(Graphics g, boolean vida, int cuadrado) {
 
-//		raton.actualizar();
+		raton.actualizar();
 //		raton.dibujar();
 
 		if (vida) {
@@ -50,13 +67,11 @@ public class Tablero {
 				celulasVisibles[i][j] = isLife(i, j);
 			}
 		}
-		
 		for (int i = 0; i < celulasOcultas.length; i++) {
 			for (int j = 0; j < celulasOcultas[i].length; j++) {
 				celulasOcultas[i][j] = celulasVisibles[i][j];
 			}
 		}
-//		celulasOcultas = celulasVisibles;
 	}
 
 	private Color obtenerColor(int numero) {
@@ -125,7 +140,5 @@ public class Tablero {
 	public void setCelulasVisibles(int[][] celulasVisibles) {
 		this.celulasVisibles = celulasVisibles;
 	}
-	
-	
 
 }

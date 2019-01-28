@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
 import java.awt.Color;
-import java.awt.GridLayout;
 
 public class Ventana extends JFrame {
 
@@ -19,8 +18,8 @@ public class Ventana extends JFrame {
 
 	private JPanel panelCanvas;
 
-	public JButton btnIniciar;
-	public JButton btnPausar;
+	private JButton btnIniciar;
+	private JButton btnPausar;
 
 	public Ventana(Lienzo dibujo) {
 		configurarVentana(dibujo);
@@ -62,4 +61,21 @@ public class Ventana extends JFrame {
 		panelCanvas.setLayout(new BorderLayout(0, 0));
 		panelCanvas.add(dibujo, BorderLayout.CENTER);
 	}
+
+	public JButton getBtnIniciar() {
+		return btnIniciar;
+	}
+
+	public void setBtnIniciar(JButton btnIniciar) {
+		this.btnIniciar = btnIniciar;
+	}
+
+	public JButton getBtnPausar() {
+		return btnPausar;
+	}
+
+	public void setBtnPausar(JButton btnPausar) {
+		this.btnPausar = btnPausar;
+	}
+
 }

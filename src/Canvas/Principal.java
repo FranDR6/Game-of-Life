@@ -3,8 +3,6 @@ package Canvas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.input.BomInput.BytesProcessedNotification;
-
 import Canvas.Vista.Lienzo;
 import Canvas.Vista.Ventana;
 
@@ -28,7 +26,7 @@ public class Principal {
 	}
 
 	public static void main(String[] args) {
-		Principal principal = new Principal(1900, 950);
+		Principal principal = new Principal(1900, 940);
 		principal.iniciar();
 		principal.iniciarBuclePrincipal();
 
@@ -44,14 +42,14 @@ public class Principal {
 	}
 
 	private void listener() {
-		
-		ventana.btnIniciar.addActionListener(new ActionListener() {
+
+		ventana.getBtnIniciar().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				vida = true;
 			}
 		});
-		
-		ventana.btnPausar.addActionListener(new ActionListener() {
+
+		ventana.getBtnPausar().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				vida = false;
 			}
@@ -69,11 +67,6 @@ public class Principal {
 			canvas.dibujar(tablero, vida, cuadrado);
 
 		}
-	}
-
-	private void actualizar() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

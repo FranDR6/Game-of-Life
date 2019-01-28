@@ -1,4 +1,4 @@
-package VersionCanvas;
+package Canvas;
 
 public class Prueba {
 

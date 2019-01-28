@@ -1,4 +1,4 @@
-package control;
+package Botones;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package VersionCanvas;
+package Canvas;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -28,8 +28,8 @@ public class Tablero {
 
 	public void dibujar(Graphics g, boolean vida, int cuadrado) {
 
-		raton.actualizar();
-		raton.dibujar();
+//		raton.actualizar();
+//		raton.dibujar();
 
 		if (vida) {
 
@@ -37,7 +37,6 @@ public class Tablero {
 
 			for (int i = 0; i < celulasOcultas.length; i++) {
 				for (int j = 0; j < celulasOcultas[i].length; j++) {
-
 					g.setColor(obtenerColor(celulasVisibles[i][j]));
 					g.fillRect(i * cuadrado, j * cuadrado, cuadrado, cuadrado);
 				}
@@ -110,5 +109,23 @@ public class Tablero {
 		Random aleatorio = new Random();
 		return aleatorio.nextInt(max - min) + min;
 	}
+
+	public int[][] getCelulasOcultas() {
+		return celulasOcultas;
+	}
+
+	public void setCelulasOcultas(int[][] celulasOcultas) {
+		this.celulasOcultas = celulasOcultas;
+	}
+
+	public int[][] getCelulasVisibles() {
+		return celulasVisibles;
+	}
+
+	public void setCelulasVisibles(int[][] celulasVisibles) {
+		this.celulasVisibles = celulasVisibles;
+	}
+	
+	
 
 }

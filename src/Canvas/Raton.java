@@ -1,4 +1,4 @@
-package VersionCanvas;
+package Canvas;
 
 import java.awt.MouseInfo;
 import java.awt.Point;

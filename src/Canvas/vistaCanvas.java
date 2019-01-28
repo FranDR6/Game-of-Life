@@ -1,17 +1,18 @@
-package control;
+package Canvas;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
-public class Lienzo extends Canvas {
+public class vistaCanvas extends Canvas {
 
 	private int ancho;
 	private int alto;
 
-	public Lienzo(int ancho, int alto) {
+	public vistaCanvas(final int ancho, final int alto) {
 		this.ancho = ancho;
 		this.alto = alto;
 
@@ -21,23 +22,23 @@ public class Lienzo extends Canvas {
 		requestFocus();
 	}
 
-	public void dibujar() {
+	public void dibujar(final Tablero tablero, boolean vida, int cuadrado) {
 		BufferStrategy buffer = getBufferStrategy();
 
 		if (buffer == null) {
-			createBufferStrategy(3);
+			createBufferStrategy(4);
 			return;
 		}
 
 		Graphics g = buffer.getDrawGraphics();
 
-		g.fillRect(0, 0, ancho, alto);
+		tablero.dibujar(g, vida, cuadrado);
 
 		Toolkit.getDefaultToolkit().sync();
 
 		g.dispose();
 
 		buffer.show();
-	}
 
+	}
 }

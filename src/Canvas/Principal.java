@@ -10,7 +10,7 @@ public class Principal {
 
 	private final int ANCHO;
 	private final int ALTO;
-	private int cuadrado = 10;
+	private int cuadrado = 5;
 
 	private boolean enFuncionamiento = false;
 	private boolean vida = false;
@@ -18,6 +18,7 @@ public class Principal {
 	private Lienzo canvas;
 	private Ventana ventana;
 	private Tablero tablero;
+	private Raton raton;
 
 	public Principal(final int ancho, final int alto) {
 		super();
@@ -34,6 +35,7 @@ public class Principal {
 
 	private void iniciar() {
 		enFuncionamiento = true;
+		raton = new Raton();
 		tablero = new Tablero(ANCHO / cuadrado, ALTO / cuadrado);
 		canvas = new Lienzo(ANCHO, ALTO);
 		ventana = new Ventana(canvas);
@@ -79,12 +81,15 @@ public class Principal {
 
 	private void iniciarBuclePrincipal() {
 		while (enFuncionamiento) {
-			
+
 			if (!vida) {
 				ventana.getLblEstado().setText("ESTADO : PAUSA");
-			}else {
+			} else {
 				ventana.getLblEstado().setText("ESTADO : FUNCIONANDO");
 			}
+
+			raton.actualizar();
+			raton.dibujar(ventana.getLblRaton());
 
 //			if (System.nanoTime() % 100000 == 0) {
 //				canvas.dibujar(tablero, vida, cuadrado);

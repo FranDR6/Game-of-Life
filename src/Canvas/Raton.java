@@ -4,6 +4,9 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 public class Raton extends MouseAdapter {
 
 	private Point posicion;
@@ -14,8 +17,8 @@ public class Raton extends MouseAdapter {
 		actualizarPosicion();
 	}
 
-	public void dibujar() {
-		System.out.println("X: " + posicion.getX() + " Y: " + posicion.getY());
+	public void dibujar(JLabel label) {
+		label.setText("X: " + posicion.getX() + " Y: " + posicion.getY());
 	}
 
 	public void actualizar() {

@@ -24,6 +24,7 @@ public class Ventana extends JFrame {
 	private JButton btnAleatorio;
 	private JButton btnReiniciar;
 	private JLabel lblEstado;
+	private JLabel lblRaton;
 
 	public Ventana(Lienzo dibujo) {
 		configurarVentana(dibujo);
@@ -56,40 +57,29 @@ public class Ventana extends JFrame {
 
 		lblEstado = new JLabel("ESTADO :");
 		lblEstado.setForeground(Color.WHITE);
+
+		lblRaton = new JLabel("");
+		lblRaton.setForeground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addComponent(panelCanvas, GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
-					.addGap(10))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnIniciar)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnPausar)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnAleatorio)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnReiniciar)
-					.addPreferredGap(ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
-					.addComponent(lblEstado)
-					.addGap(10))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(12)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnIniciar)
-						.addComponent(btnPausar)
-						.addComponent(btnAleatorio)
-						.addComponent(btnReiniciar)
-						.addComponent(lblEstado))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panelCanvas, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-					.addGap(10))
-		);
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup().addGap(10).addComponent(panelCanvas,
+										GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(btnIniciar)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnPausar)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnAleatorio)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(btnReiniciar)
+										.addPreferredGap(ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+										.addComponent(lblRaton).addGap(10).addComponent(lblEstado)))
+						.addGap(10)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup().addGap(12)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(btnIniciar)
+								.addComponent(btnPausar).addComponent(btnAleatorio).addComponent(btnReiniciar)
+								.addComponent(lblEstado).addComponent(lblRaton))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(panelCanvas, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE).addGap(10)));
 		getContentPane().setLayout(groupLayout);
 
 		panelCanvas.setLayout(new BorderLayout(0, 0));
@@ -118,6 +108,14 @@ public class Ventana extends JFrame {
 
 	public void setLblEstado(JLabel lblEstado) {
 		this.lblEstado = lblEstado;
+	}
+
+	public JLabel getLblRaton() {
+		return lblRaton;
+	}
+
+	public void setLblRaton(JLabel lblRaton) {
+		this.lblRaton = lblRaton;
 	}
 
 }

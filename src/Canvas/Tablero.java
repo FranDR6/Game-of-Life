@@ -10,8 +10,6 @@ public class Tablero {
 	private int[][] celulasOcultas;
 	private int[][] celulasVisibles;
 
-	private Raton raton;
-
 	public Tablero(int i, int j) {
 		super();
 		this.celulasOcultas = new int[i][j];
@@ -34,13 +32,9 @@ public class Tablero {
 //		celulasOcultas[94][44] = 1;
 //		celulasOcultas[94][45] = 1;
 
-		this.raton = new Raton();
 	}
 
 	public void dibujar(Graphics g, boolean vida, int cuadrado) {
-
-		raton.actualizar();
-//		raton.dibujar();
 
 		if (vida) {
 

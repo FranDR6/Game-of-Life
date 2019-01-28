@@ -17,7 +17,7 @@ public class Tablero {
 		this.celulasOcultas = new int[i][j];
 		this.celulasVisibles = new int[i][j];
 
-		System.out.println(celulasOcultas.length + " " + celulasOcultas[0].length);
+//		System.out.println(celulasOcultas.length + " " + celulasOcultas[0].length);
 		
 		// PATRON
 //		celulasOcultas[95][47] = 1;

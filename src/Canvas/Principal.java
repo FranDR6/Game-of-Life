@@ -55,10 +55,36 @@ public class Principal {
 			}
 		});
 
+		ventana.getBtnAleatorio().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for (int i = 0; i < tablero.getCelulasOcultas().length; i++) {
+					for (int j = 0; j < tablero.getCelulasOcultas()[i].length; j++) {
+						tablero.getCelulasOcultas()[i][j] = Tablero.obtenerNumeroAleatorio(0, 1);
+					}
+				}
+			}
+		});
+
+		ventana.getBtnReiniciar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < tablero.getCelulasOcultas().length; i++) {
+					for (int j = 0; j < tablero.getCelulasOcultas()[i].length; j++) {
+						tablero.getCelulasOcultas()[i][j] = 0;
+					}
+				}
+			}
+		});
+
 	}
 
 	private void iniciarBuclePrincipal() {
 		while (enFuncionamiento) {
+			
+			if (!vida) {
+				ventana.getLblEstado().setText("ESTADO : PAUSA");
+			}else {
+				ventana.getLblEstado().setText("ESTADO : FUNCIONANDO");
+			}
 
 //			if (System.nanoTime() % 100000 == 0) {
 //				canvas.dibujar(tablero, vida, cuadrado);

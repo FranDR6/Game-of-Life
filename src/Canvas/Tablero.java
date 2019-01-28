@@ -18,7 +18,7 @@ public class Tablero {
 		this.celulasVisibles = new int[i][j];
 
 //		System.out.println(celulasOcultas.length + " " + celulasOcultas[0].length);
-		
+
 		// PATRON
 //		celulasOcultas[95][47] = 1;
 //		celulasOcultas[94][48] = 1;
@@ -33,12 +33,6 @@ public class Tablero {
 //		celulasOcultas[95][44] = 1;
 //		celulasOcultas[94][44] = 1;
 //		celulasOcultas[94][45] = 1;
-
-		for (int x = 0; x < celulasOcultas.length; x++) {
-			for (int y = 0; y < celulasOcultas[x].length; y++) {
-				celulasOcultas[x][y] = obtenerNumeroAleatorio(0, 1);
-			}
-		}
 
 		this.raton = new Raton();
 	}
@@ -119,7 +113,7 @@ public class Tablero {
 		}
 	}
 
-	private static int obtenerNumeroAleatorio(int min, int max) {
+	public static int obtenerNumeroAleatorio(int min, int max) {
 		max++;
 		Random aleatorio = new Random();
 		return aleatorio.nextInt(max - min) + min;

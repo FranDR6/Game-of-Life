@@ -10,6 +10,9 @@ public class Tablero {
 	private int[][] celulasOcultas;
 	private int[][] celulasVisibles;
 
+	public Color colorVida = Color.CYAN;
+	public Color colorMuerta = Color.BLACK;
+
 	public Tablero(int i, int j) {
 		super();
 		this.celulasOcultas = new int[i][j];
@@ -17,7 +20,8 @@ public class Tablero {
 
 //		System.out.println(celulasOcultas.length + " " + celulasOcultas[0].length);
 
-		// PATRON
+		// PATRONES
+
 //		celulasOcultas[95][47] = 1;
 //		celulasOcultas[94][48] = 1;
 //		celulasOcultas[96][47] = 1;
@@ -64,9 +68,9 @@ public class Tablero {
 
 	private Color obtenerColor(int numero) {
 		if (numero == 1) {
-			return Color.WHITE;
+			return colorVida;
 		} else {
-			return Color.BLACK;
+			return colorMuerta;
 		}
 	}
 
@@ -108,9 +112,8 @@ public class Tablero {
 	}
 
 	public static int obtenerNumeroAleatorio(int min, int max) {
-		max++;
 		Random aleatorio = new Random();
-		return aleatorio.nextInt(max - min) + min;
+		return aleatorio.nextInt((max + 1) - min) + min;
 	}
 
 	public int[][] getCelulasOcultas() {

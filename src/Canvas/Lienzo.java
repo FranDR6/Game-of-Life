@@ -1,4 +1,4 @@
-package Canvas.Vista;
+package Canvas;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
-
-import Canvas.Tablero;
 
 public class Lienzo extends Canvas {
 
@@ -43,9 +41,9 @@ public class Lienzo extends Canvas {
 
 				if (vida == false) {
 					if (tablero.getCelulasOcultas()[i][j] == 1) {
-						g.setColor(Color.WHITE);
+						g.setColor(tablero.colorVida);
 					} else {
-						g.setColor(Color.BLACK);
+						g.setColor(tablero.colorMuerta);
 					}
 					g.fillRect(i * cuadrado, j * cuadrado, cuadrado, cuadrado);
 				}

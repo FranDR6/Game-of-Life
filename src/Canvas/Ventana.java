@@ -1,4 +1,4 @@
-package Canvas.Vista;
+package Canvas;
 
 import java.awt.BorderLayout;
 
@@ -31,6 +31,7 @@ public class Ventana extends JFrame {
 	}
 
 	private void configurarVentana(Lienzo dibujo) {
+		setBounds(800, 800, 800, 800);
 		setTitle("Juego de la Vida");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -3,9 +3,6 @@ package Canvas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Canvas.Vista.Lienzo;
-import Canvas.Vista.Ventana;
-
 public class Principal {
 
 	private final int ANCHO;
